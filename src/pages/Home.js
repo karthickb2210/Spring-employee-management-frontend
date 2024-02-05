@@ -19,7 +19,7 @@ export default function Home() {
   };
 
   const deleteUser = async (id) => {
-    await axios.delete(`https://puny-baseball-production.up.railway.app/${id}`);
+    await axios.delete(`https://puny-baseball-production.up.railway.app/user/${id}`);
     loadUsers();
   };
 

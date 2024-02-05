@@ -6,9 +6,11 @@ export default function Home() {
   const [users, setUsers] = useState([]);
 
   const { id } = useParams();
-
+  let x  = id;
+  console.log(x);
   useEffect(() => {
     loadUsers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadUsers = async () => {

@@ -19,8 +19,14 @@ export default function Home() {
   };
 
   const deleteUser = async (id) => {
-    await axios.delete(`https://puny-baseball-production.up.railway.app/user/${id}`);
-    loadUsers();
+    let pass = prompt("Enter the password :")
+    if(pass === "abc"){
+      await axios.delete(`https://puny-baseball-production.up.railway.app/user/${id}`);
+      loadUsers();
+    }else{
+      alert("Wrong password")
+    }
+    
   };
 
   return (

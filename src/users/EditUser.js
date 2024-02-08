@@ -13,7 +13,7 @@ export default function EditUser() {
     email: "",
   });
 
-  const { name, username, email } = user;
+  const { name, inTime, email } = user;
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -26,12 +26,12 @@ export default function EditUser() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`https://puny-baseball-production.up.railway.app/user/${id}`, user);
+    await axios.put(`https://employee-tracker-backend-production-b1a1.up.railway.app/user/${id}`, user);
     navigate("/");
   };
 
   const loadUser = async () => {
-    const result = await axios.get(`https://puny-baseball-production.up.railway.app/user/${id}`);
+    const result = await axios.get(`https://employee-tracker-backend-production-b1a1.up.railway.app/user/${id}`);
     setUser(result.data);
   };
 
@@ -63,8 +63,8 @@ export default function EditUser() {
                 type={"text"}
                 className="form-control"
                 placeholder="Enter your username"
-                name="username"
-                value={username}
+                name="inTime"
+                value={inTime}
                 onChange={(e) => onInputChange(e)}
               />
             </div>

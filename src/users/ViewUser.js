@@ -17,7 +17,7 @@ export default function ViewUser() {
   }, []);
 
   const loadUser = async () => {
-    const result = await axios.get(`https://puny-baseball-production.up.railway.app/user/${id}`);
+    const result = await axios.get(`https://employee-tracker-backend-production-b1a1.up.railway.app/user/${id}`);
     setUser(result.data);
   };
 
@@ -36,8 +36,12 @@ export default function ViewUser() {
                   {user.name}
                 </li>
                 <li className="list-group-item">
-                  <b>UserName:</b>
-                  {user.username}
+                  <b>In Time:</b>
+                  {user.inTime}
+                </li>
+                <li className="list-group-item">
+                  <b>Out Time:</b>
+                  {user.logOut}
                 </li>
                 <li className="list-group-item">
                   <b>Email:</b>

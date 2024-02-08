@@ -6,20 +6,31 @@ export default function AddUser() {
   let navigate = useNavigate();
 
   const [user, setUser] = useState({
+    id:"",
     name: "",
-    username: "",
+    inTime: "",
+    logOut:"",
     email: "",
   });
-
-  const { name, username, email } = user;
+  
+  let { id ,name, email } = user;
+  
 
   const onInputChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value  });
+    // setUser(inTime = currtime());
   };
+  function currtime(){
+    let d = new Date();
+    return d.toLocaleTimeString('it-IT');
+  }
 
   const onSubmit = async (e) => {
+    console.log(currtime());
+    
     e.preventDefault();
-    await axios.post("https://puny-baseball-production.up.railway.app/user", user);
+    setUser(user.inTime= currtime())
+    await axios.post("https://employee-tracker-backend-production-b1a1.up.railway.app/user", user);
     navigate("/");
   };
 
@@ -32,6 +43,17 @@ export default function AddUser() {
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
               <label htmlFor="Name" className="form-label">
+                Id
+              </label>
+              <input
+                type={"text"}
+                className="form-control"
+                placeholder="Enter your id"
+                name="id"
+                value={id}
+                onChange={(e) => onInputChange(e)}
+              />
+               <label htmlFor="Name" className="form-label">
                 Name
               </label>
               <input
@@ -43,19 +65,19 @@ export default function AddUser() {
                 onChange={(e) => onInputChange(e)}
               />
             </div>
-            <div className="mb-3">
+            {/* <div className="mb-3">
               <label htmlFor="Username" className="form-label">
-                Username
+                Intime
               </label>
               <input
                 type={"text"}
                 className="form-control"
-                placeholder="Enter your username"
-                name="username"
-                value={username}
+                placeholder="Enter your LoginTime"
+                name="inTime"
+                value={inTime}
                 onChange={(e) => onInputChange(e)}
               />
-            </div>
+            </div> */}
             <div className="mb-3">
               <label htmlFor="Email" className="form-label">
                 E-mail

@@ -35,17 +35,17 @@ export default function Home() {
   function findTime(s1,s2){
     if(s2===""){
       return s2;
+    }else{
+      let s  = s1.substr(0,2);
+      let sub = s2.substr(0,2);
+      let ans = sub-s;
+      if(ans<0){
+        return ans*(-1) + " hrs";
+      }
+      return ans + " hrs";
+      // return sub - s;
     }
-    s1 =  s1.split(':');
-
-
-  let totalSeconds1 = parseInt(s1[0] * 3600 + s1[1] * 60 + s1[2]);
-  let totalSeconds2 = parseInt(s2 * 3600 + s2 * 60 + s2)
-    if(totalSeconds1>totalSeconds2){
-      return "Not Met";
-    } 
-    return "met"
-    
+  
     
   }
   return (
@@ -73,7 +73,7 @@ export default function Home() {
                 <td>{user.inTime}</td>
                 <td>{user.email}</td>
                 <td>{user.logOut}</td>
-                <td>{findTime(user.inTime,8)}</td>
+                <td>{findTime(user.inTime,user.logOut)}</td>
                 <td>
                   <Link
                     className="btn btn-primary mx-2"
